@@ -1,19 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  // TODO change to env vars
-  private apiUrl = 'http://localhost:6969';
-  private jwtToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
+  private apiUrl = environment.url;
+  private jwtToken = environment.jwt;
 
   constructor(private http: HttpClient,
   ) {
     try {
-      // Try to access localStorage
       const storedToken = localStorage.getItem('jwtToken');
       if (storedToken) {
         this.jwtToken = storedToken;

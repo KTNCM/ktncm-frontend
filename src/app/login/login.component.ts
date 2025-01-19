@@ -27,7 +27,6 @@ export class LoginComponent {
     this.form = this.fb.group({
      'email' : [null, {
        validators : [Validators.required, Validators.email],
-      //  asyncValidators : [this.form.bind(this)],
        updateOn: 'blur'
      }],
      'password' : [null, {
@@ -40,24 +39,18 @@ export class LoginComponent {
     const email = this.form.value.email;
     const password = this.form.value.password;
 
-
-      // Call the login API via AuthService
       this.authService.login(email, password).subscribe({
         next: (response) => {
           console.log('Login successful:', response);
 
-          // Store the token in local storage
           localStorage.setItem('jwtToken', response.token);
 
-          // Set the token in AuthService
           this.authService.setToken(response.token);
 
-          // Optionally, navigate to another route or notify the user
+          // TODO navigate when logged in
         },
         error: (error) => {
           console.error('Error during login:', error);
-
-          // You can add a UI element to show the error message to the user
         },
       });
   }
