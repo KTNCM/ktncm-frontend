@@ -44,6 +44,14 @@ input {
   cursor: pointer;
 }
 
-.login-button:hover {
-  background-color: #0056b3;
+input.ng-invalid.ng-touched { border: 1px solid #d11124; }
+
+.error-message{
+    text-align: left;
+    color: #d11124;
+}
+
+.login-button:hover{
+  background-color: #004182;
+  color: white;
 }
