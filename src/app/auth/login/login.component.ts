@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../../auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
@@ -43,9 +43,11 @@ export class LoginComponent {
         next: (response) => {
           console.log('Login successful:', response);
 
-          localStorage.setItem('jwtToken', response.token);
+          const token = response.access_token;
+          localStorage.setItem('jwtToken', token);
+          console.log(token)
 
-          this.authService.setToken(response.token);
+          this.authService.setToken(token);
 
           // TODO navigate when logged in
         },
