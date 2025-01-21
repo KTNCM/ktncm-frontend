@@ -3,6 +3,7 @@ import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { AuthService } from '../../auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ import { CommonModule } from '@angular/common';
 export class LoginComponent {
   form! : FormGroup;
 
-  constructor(private authService: AuthService, private fb: FormBuilder) {  }
+  constructor(private authService: AuthService, private fb: FormBuilder, private router: Router) {  }
 
   get email() {
     return this.form.controls['email'];
@@ -34,6 +35,10 @@ export class LoginComponent {
      }]
     });
    }
+
+  redirectRegister() {
+    this.router.navigate(['register'])
+  }
 
   onLogin(): void {
     const email = this.form.value.email;

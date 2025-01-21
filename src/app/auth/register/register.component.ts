@@ -36,7 +36,7 @@ export class RegisterComponent {
     });
    }
 
-   redirectLogin() {
+  redirectLogin() {
     this.router.navigate(['login'])
   }
 

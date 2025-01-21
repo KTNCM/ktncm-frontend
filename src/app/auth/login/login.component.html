@@ -1,55 +1,24 @@
 <div class="login-container">
-  <h2>Login</h2>
   <form [formGroup]="form" class="form" (ngSubmit)="onLogin()">
-    <!-- Email Field -->
+    <h2>Login</h2>
     <div class="form-group">
-      <label for="email">Email</label>
-      <input
-        id="email"
-        type="email"
-        formControlName="email"
-        class="form-control"
-      />
-      <!-- Error Messages -->
-      <span
-        class="error-message"
-        *ngIf="email?.touched && email?.invalid && email?.errors?.['required']"
-      >
-        Enter your email address.
-      </span>
-      <span
-        class="error-message"
-        *ngIf="email?.touched && email?.invalid && email?.errors?.['email']"
-      >
-        Enter a valid email address.
-      </span>
+      <div class="form-email">
+        <label for="email" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="email" name="email" formControlName="email">
+        <span class="error-message" *ngIf="email.touched && email.invalid && email.errors?.['required']">Enter your email address.</span>
+        <span class="error-message" *ngIf="email.touched && email.invalid && (email.errors?.['email'] || email.errors?.['invalidEmail'])">Enter correct email address.</span>
+      </div>
     </div>
 
-    <!-- Password Field -->
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input
-        id="password"
-        type="password"
-        formControlName="password"
-        class="form-control"
-      />
-      <!-- Error Messages -->
-      <span
-        class="error-message"
-        *ngIf="password?.touched && password?.invalid && password?.errors?.['required']"
-      >
-        Enter your password.
-      </span>
-      <span
-        class="error-message"
-        *ngIf="password?.touched && password?.invalid && password?.errors?.['minlength']"
-      >
-        Password must be at least 6 characters.
-      </span>
+    <div class="form-password">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" id="password" name="password" formControlName="password">
+      <span class="error-message" *ngIf="password.touched && password.invalid && password.errors?.['required']">Enter your password.</span>
+      <span class="error-message" *ngIf="password.touched && password.invalid && password.errors?.['minlength']">Enter correct password.</span>
     </div>
 
     <!-- Submit Button -->
     <button type="submit" [disabled]="form.invalid">Login</button>
   </form>
+  <p>No account? <a (click)="redirectRegister()" style="cursor: pointer; color: #0077B5;">Register here</a></p>
 </div>

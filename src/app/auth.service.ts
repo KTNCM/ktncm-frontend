@@ -8,7 +8,7 @@ import { environment } from '../environments/environment';
 })
 export class AuthService {
   private apiUrl = environment.url;
-  private jwtToken;
+  private jwtToken: string | null = null;
 
   constructor(private http: HttpClient,
   ) {
@@ -24,6 +24,12 @@ export class AuthService {
 
   setToken(token: string): void {
     this.jwtToken = token;
+    localStorage.setItem('jwtToken', token);
+  }
+
+  clearToken(): void {
+    this.jwtToken = null;
+    localStorage.removeItem('jwtToken');
   }
 
   login(email: string, password: string): Observable<any> {
