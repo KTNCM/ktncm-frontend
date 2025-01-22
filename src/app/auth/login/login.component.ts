@@ -54,7 +54,7 @@ export class LoginComponent {
 
           this.authService.setToken(token);
 
-          // TODO navigate when logged in
+          this.router.navigate(["/destinations"])
         },
         error: (error) => {
           console.error('Error during login:', error);

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DestinationService } from '../destination.service';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-destinations',
@@ -11,7 +13,7 @@ import { CommonModule } from '@angular/common';
 export class DestinationsComponent implements OnInit{
   destinations: any[] = [];
 
-  constructor(private destinationService: DestinationService) {}
+  constructor(private destinationService: DestinationService, private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.fetchDestinations();
