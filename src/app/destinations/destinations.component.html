@@ -1,0 +1,13 @@
+<div class="page-container">
+  <div class="destinations-container">
+    <div *ngFor="let destination of destinations" class="destination-item">
+      <div class="destination-description">
+        <h3>{{ destination.name }}</h3>
+        <p>{{ destination.description }}</p>
+      </div>
+      <div class="destination-image">
+        <img [src]="destination.url" alt="{{ destination.name }}" class="destination-image-img">
+      </div>
+    </div>
+  </div>
+</div>

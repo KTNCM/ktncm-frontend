@@ -8,7 +8,7 @@ import { environment } from '../environments/environment';
 })
 export class AuthService {
   private apiUrl = environment.url;
-  private jwtToken = environment.jwt;
+  private jwtToken: string | null = null;
 
   constructor(private http: HttpClient,
   ) {
@@ -22,15 +22,31 @@ export class AuthService {
     }
   }
 
-
   setToken(token: string): void {
     this.jwtToken = token;
+    localStorage.setItem('jwtToken', token);
+  }
+
+  logout(): void {
+    this.jwtToken = null;
+    localStorage.removeItem('jwtToken');
   }
 
   login(email: string, password: string): Observable<any> {
-    const url = `${this.apiUrl}/auth/login`; // Full API endpoint
+    const url = `${this.apiUrl}/auth/login`;
+
+    const body = {
+      email,
+      password,
+    };
+
+    return this.http.post(url, body);
+  }
+
+  register(email: string, password: string): Observable<any> {
+    const url = `${this.apiUrl}/users`;
     const headers = new HttpHeaders({
-      Authorization: `Bearer ${this.jwtToken}`, // Attach JWT token
+      'Content-Type': 'application/json',
     });
 
     const body = {
