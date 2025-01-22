@@ -1,55 +1,78 @@
-<div class="login-container">
-  <h2>Login</h2>
-  <form [formGroup]="form" (ngSubmit)="onLogin()">
-    <!-- Email Field -->
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input
-        id="email"
-        type="email"
-        formControlName="email"
-        class="form-control"
-      />
-      <!-- Error Messages -->
-      <span
-        class="error-message"
-        *ngIf="email?.touched && email?.invalid && email?.errors?.['required']"
-      >
-        Enter your email address.
-      </span>
-      <span
-        class="error-message"
-        *ngIf="email?.touched && email?.invalid && email?.errors?.['email']"
-      >
-        Enter a valid email address.
-      </span>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login Your Account</h2>
+    <p>Don't have an account? <a href="#">Sign Up</a></p>
+    <form [formGroup]="form" (ngSubmit)="onLogin()">
+      <!-- Email Field -->
+      <div class="form-group">
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          class="form-control"
+          placeholder="Email or User Name"
+        />
+        <!-- Error Messages -->
+        <span
+          class="error-message"
+          *ngIf="email?.touched && email?.invalid && email?.errors?.['required']"
+        >
+          Enter your email address.
+        </span>
+        <span
+          class="error-message"
+          *ngIf="email?.touched && email?.invalid && email?.errors?.['email']"
+        >
+          Enter a valid email address.
+        </span>
+      </div>
 
-    <!-- Password Field -->
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input
-        id="password"
-        type="password"
-        formControlName="password"
-        class="form-control"
-      />
-      <!-- Error Messages -->
-      <span
-        class="error-message"
-        *ngIf="password?.touched && password?.invalid && password?.errors?.['required']"
-      >
-        Enter your password.
-      </span>
-      <span
-        class="error-message"
-        *ngIf="password?.touched && password?.invalid && password?.errors?.['minlength']"
-      >
-        Password must be at least 6 characters.
-      </span>
-    </div>
+      <!-- Password Field -->
+      <div class="form-group">
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          class="form-control"
+          placeholder="Password"
+        />
+        <!-- Error Messages -->
+        <span
+          class="error-message"
+          *ngIf="password?.touched && password?.invalid && password?.errors?.['required']"
+        >
+          Enter your password.
+        </span>
+        <span
+          class="error-message"
+          *ngIf="password?.touched && password?.invalid && password?.errors?.['minlength']"
+        >
+          Password must be at least 6 characters.
+        </span>
+      </div>
 
-    <!-- Submit Button -->
-    <button type="submit" [disabled]="form.invalid">Login</button>
-  </form>
-</div>
+      <!-- Remember Me and Forgot Password -->
+      <div class="options">
+        <label class="remember-me">
+          <input type="checkbox" formControlName="remember" />
+          Remember Password
+        </label>
+        <a href="#" class="forgot-password">Forgotten Your Password?</a>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="login-button" [disabled]="form.invalid">
+        Login
+      </button>
+    </form>
+  </div>
+</body>
+</html>

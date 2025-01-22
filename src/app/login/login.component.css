@@ -1,57 +1,133 @@
+/* Animated Gradient Background */
+body {
+  margin: 0;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  /** background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite; */
+  background-image: url('/18.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Login Container */
 .login-container {
-  max-width: 400px;
-  margin: 50px auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  margin: auto;
+  min-width: 390px;
+  margin-top: 175px;
 }
 
 h2 {
-  text-align: center;
-  margin-bottom: 20px;
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
   color: #333;
 }
 
-.form-group {
-  margin-bottom: 15px;
+p {
+  font-size: 14px;
+  margin-bottom: 20px;
+  color: #666;
 }
 
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
+p a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+p a:hover {
+  text-decoration: underline;
+}
+
+.form-group {
+  margin-bottom: 20px;
 }
 
 input {
   width: 100%;
-  padding: 8px;
+  padding: 12px;
   font-size: 14px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 5px;
   box-sizing: border-box;
+}
+
+input::placeholder {
+  color: #aaa;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid #d11124;
+}
+
+.error-message {
+  text-align: left;
+  color: #d11124;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+}
+
+.remember-me input {
+  margin-right: 5px;
+}
+
+.forgot-password {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
 }
 
 .login-button {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   font-size: 16px;
-  color: #fff;
+  font-weight: bold;
+  color: white;
   background-color: #007bff;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-input.ng-invalid.ng-touched { border: 1px solid #d11124; }
-
-.error-message{
-    text-align: left;
-    color: #d11124;
-}
-
-.login-button:hover{
-  background-color: #004182;
+.login-button:hover {
+  background-color: #0056b3;
   color: white;
 }
