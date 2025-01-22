@@ -1,0 +1,43 @@
+.page-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically (optional) */
+  min-height: 100vh; /* Full viewport height */
+  padding: 20px; /* Avoid edge collisions */
+  background-color: #f0f0f0; /* Light background for better visibility */
+}
+
+.destinations-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 800px; /* Control the width of the container */
+}
+
+.destination-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.destination-description {
+  flex: 1;
+  padding-right: 15px;
+}
+
+.destination-image {
+  flex-shrink: 0;
+  width: 100px;
+}
+
+.destination-image-img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
