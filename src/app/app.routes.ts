@@ -5,7 +5,7 @@ import { DestinationsComponent } from './destinations/destinations.component';
 import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/register', pathMatch: 'full' },
+  { path: '', redirectTo: 'register', pathMatch: 'full' },
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent },
   { path: 'destinations', component: DestinationsComponent, canActivate: [authGuard] }
