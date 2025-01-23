@@ -1,11 +1,14 @@
 # KtncmFrontend
 
+[![Run Tests](https://github.com/KTNCM/ktncm-frontend/actions/workflows/node.js.yml/badge.svg)](https://github.com/KTNCM/ktncm-services/actions/workflows/test.yml)
+[![codecov](https://codecov.io/gh/KTNCM/ktncm-frontent/branch/main/graph/badge.svg)](https://codecov.io/gh/KTNCM/ktncm-services)
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.1.
 
 ## Development server
 
 To start a local development server, run:
-
+W
 ```bash
 ng serve
 ```
