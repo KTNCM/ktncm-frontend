@@ -17,7 +17,6 @@ export class AuthService {
     private http: HttpClient,
     private router: Router,
     private storageService: StorageService,
-    @Inject(PLATFORM_ID) private platformId: Object
   ) { }
 
   login(email: string, password: string): Observable<any> {
