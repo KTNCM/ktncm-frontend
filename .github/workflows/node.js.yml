@@ -6,7 +6,6 @@ on:
 
 jobs:
   test:
-    name: Angular Build
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -35,7 +34,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: coverage-report
-          path: lcov.info
+          path: ./coverage/ktncm-frontend/lcov.info
           if-no-files-found: error
 
       # - name: Upload coverage reports to Codecov
