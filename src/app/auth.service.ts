@@ -1,49 +1,27 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { Router } from '@angular/router';
+import { isPlatformBrowser } from '@angular/common';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private apiUrl = environment.url;
-  private jwtToken: string | null = null;
+  private readonly TOKEN_KEY = 'jwtToken';
 
-  constructor(private http: HttpClient, private router: Router) {
-    try {
-      const storedToken = localStorage.getItem('jwtToken');
-      if (storedToken) {
-        this.jwtToken = storedToken;
-      }
-    } catch (e) {
-      console.warn('localStorage is not available. Using in-memory token storage.');
-    }
-  }
-
-  setToken(token: string): void {
-    this.jwtToken = token;
-    localStorage.setItem('jwtToken', token);
-  }
-
-  isLoggedIn(): boolean {
-    return this.jwtToken != null;
-  }
-
-  logout(): void {
-    this.jwtToken = null;
-    localStorage.removeItem('jwtToken');
-    this.router.navigate(["/login"])
-  }
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private storageService: StorageService,
+  ) { }
 
   login(email: string, password: string): Observable<any> {
     const url = `${this.apiUrl}/auth/login`;
-
-    const body = {
-      email,
-      password,
-    };
+    const body = { email, password };
 
     return this.http.post(url, body);
   }
@@ -53,12 +31,25 @@ export class AuthService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
-
-    const body = {
-      email,
-      password,
-    };
+    const body = { email, password };
 
     return this.http.post(url, body, { headers });
+  }
+
+  setToken(token: string): void {
+    this.storageService.setItem(this.TOKEN_KEY, token);
+  }
+
+  getToken(): string | null {
+    return this.storageService.getItem(this.TOKEN_KEY);
+  }
+
+  isLoggedIn(): boolean {
+    return this.getToken() !== null;
+  }
+
+  logout(): void {
+    this.storageService.removeItem(this.TOKEN_KEY);
+    this.router.navigate(['/login']);
   }
 }
