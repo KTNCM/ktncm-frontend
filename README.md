@@ -1,7 +1,7 @@
 # KtncmFrontend
 
 [![Run Tests](https://github.com/KTNCM/ktncm-frontend/actions/workflows/node.js.yml/badge.svg)](https://github.com/KTNCM/ktncm-frontend/actions/workflows/node.js.yml)
-[![codecov](https://codecov.io/gh/KTNCM/ktncm-frontent/branch/main/graph/badge.svg)](https://codecov.io/gh/KTNCM/ktncm-frontend)
+[![codecov](https://codecov.io/gh/KTNCM/ktncm-frontend/branch/main/graph/badge.svg)](https://codecov.io/gh/KTNCM/ktncm-frontend)
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.1.
 
